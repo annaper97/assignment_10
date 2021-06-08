@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>assignment10</title>
+</head>
+<body>
+        {% with alarts = get_flashed_messages() %}
+            {% if alarts %}
+                {% for alart in alarts %}
+                    <h4>{{ alart }}</h4>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <h2> Insert new user to users list:</h2>
+        <form method="post" action="/insert_user">
+            <label>first name</label> <br>
+            <input type="text" placeholder="Enter first name" name="first_name"><br>
+            <label >last name</label> <br>
+            <input type="text" placeholder="Enter last name" name="last_name"><br>
+            <label >email</label> <br>
+            <input type="text" placeholder="Enter email" name="email"><br>
+            <input type="submit">
+            </form>
+        <br>
+        <h2> Update user's first name:</h2>
+        <form method="post" action="/update_user">
+            <label >first name</label> <br>
+            <input type="text" placeholder="Enter new first name" name="f_name"><br>
+            <label >email</label> <br>
+            <input type="text" placeholder="Enter email " name="email"><br>
+            <input type="submit">
+            </form>
+        <br>
+        <h2> Delete user from users list:</h2>
+           <form method="post" action="/delete_user">
+            <label >Enter email</label> <br>
+            <input type="email" placeholder="Enter email" name="email"><br>
+            <input type="submit">
+            </form>
+        <br>
+     <h2> Users list:</h2>
+        <ol>
+            {% for user in users %}
+            <li> First name: {{ user.first_name }}, Last name: {{ user.last_name }}, Email: {{ user.email }}</li>
+            {% endfor %}
+        </ol>
+</body>
+</html>
